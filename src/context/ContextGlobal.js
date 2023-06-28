@@ -8,9 +8,9 @@ export default function GlobalContext({ children }) {
         setData(param)
     }
 
-    useEffect(()=>{
-        console.log(data)
-    },[data])
+    // useEffect(()=>{
+    //     console.log(data)
+    // },[data])
 
     const value = {
         datas:data,

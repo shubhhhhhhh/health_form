@@ -33,7 +33,7 @@ export default function Edit(props) {
 
     return (
         <>
-            <Modal dialogClassName="modal-90w" show={true} xs={"auto"} onHide={cancel}>
+            <Modal dialogClassName="modal-90w" show={true} onHide={cancel}>
                 <Modal.Header closeButton>
                     <Modal.Title>update form</Modal.Title>
                 </Modal.Header>
@@ -76,6 +76,8 @@ export default function Edit(props) {
                                                         value={e.value}
                                                         defaultChecked={props.input.opt1 ? props.input.opt1 == e.value
                                                             : ""}
+                                                        id={`default-${e.value}-opt1`}
+                                                        onChange={props.handlechange}
                                                     />
                                                 )
                                             })}
@@ -97,6 +99,8 @@ export default function Edit(props) {
                                                         value={e.value}
                                                         defaultChecked={props.input.opt2 ? props.input.opt2 == e.value
                                                             : ""}
+                                                        id={`default-${e.value}-opt2`}
+                                                        onChange={props.handlechange}
                                                     />
                                                 )
                                             })}
@@ -107,6 +111,7 @@ export default function Edit(props) {
                                             <Form.Label style={{ marginRight: "5%" }}>
                                                 Did the problem start after a mental trauma?
                                             </Form.Label>
+                                            <div key={`inline-radio`} className="mb-3">
                                             {props.comopt.map((e, i) => {
                                                 return (
                                                     <Form.Check
@@ -118,9 +123,11 @@ export default function Edit(props) {
                                                         value={e.value}
                                                         defaultChecked={props.input.opt3 ? props.input.opt3 == e.value
                                                             : ""}
+                                                        id={`default-${e.value}-opt3`}
                                                     />
                                                 )
                                             })}
+                                            </div>
                                         </Form.Group>
                                     </div>
                                     <div className='opt4'>
@@ -140,6 +147,7 @@ export default function Edit(props) {
                                                             value={e.value}
                                                             defaultChecked={props.input.opt4 ? props.input.opt4 == e.value
                                                                 : ""}
+                                                            id={`default-${e.value}-4`}
                                                         />
                                                     )
                                                 })}
@@ -160,7 +168,6 @@ export default function Edit(props) {
                                                             e.value == x
                                                         )
                                                     })
-                                                    console.log(val)
                                                     return (
                                                         <Form.Check
                                                             key={i}
@@ -170,6 +177,7 @@ export default function Edit(props) {
                                                             value={e.value}
                                                             defaultChecked={props.input.opt5 ? val && val.length > 0
                                                                 : ""}
+                                                            id={`default-${e.value}-5`}
                                                         />
                                                     )
                                                 })}
@@ -202,6 +210,7 @@ export default function Edit(props) {
                                                             value={e}
                                                             defaultChecked={props.input.opt6 ? props.input.opt6 == e
                                                                 : ""}
+                                                            id={`default-${e}-6`}
                                                         />
                                                     )
                                                 })}

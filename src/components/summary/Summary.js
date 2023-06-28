@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 export default function Summary() {
     const { datas } = useContext(MainContext)
-    console.log(datas)
+    // console.log(datas)
 
     const navigate = useNavigate()
 

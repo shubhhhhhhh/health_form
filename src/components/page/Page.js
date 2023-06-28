@@ -16,9 +16,9 @@ export default function Page() {
         }
     }, [])
 
-    useEffect(() => {
-        console.log(input)
-    }, [input])
+    // useEffect(() => {
+    //     console.log(input)
+    // }, [input])
 
     //arrays for dynamic fields in form inputs
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -53,7 +53,7 @@ export default function Page() {
 
     //  if form has data then set it to context
     useEffect(() => {
-        console.log(form)
+        // console.log(form)
         setDat(form)
     }, [form])
 
@@ -134,7 +134,7 @@ export default function Page() {
                                     <Form.Label>
                                         If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)
                                     </Form.Label>
-                                    <Form.Control as={"textarea"} placeholder='type here' name="prob" onChange={handleChange} rows={3} xs />
+                                    <Form.Control as={"textarea"} placeholder='type here' name="prob" onChange={handleChange} rows={3}  />
                                 </Form.Group>
                             </div>
                             <div className='opt1'>
@@ -150,6 +150,7 @@ export default function Page() {
                                                 label={e.label}
                                                 name="opt1"
                                                 type={'radio'}
+                                                id={`default-${e.value}-1`}
                                                 value={e.value}
                                             />
                                         )
@@ -170,6 +171,7 @@ export default function Page() {
                                                 name="opt2"
                                                 type={'radio'}
                                                 value={e.value}
+                                                id={`default-${e.value}-2`}
                                             />
                                         )
                                     })}
@@ -189,6 +191,7 @@ export default function Page() {
                                                 name="opt3"
                                                 type={'radio'}
                                                 value={e.value}
+                                                id={`default-${e.value}-3`}
                                             />
                                         )
                                     })}
@@ -209,6 +212,7 @@ export default function Page() {
                                                     name="opt4"
                                                     type={'radio'}
                                                     value={e.value}
+                                                    id={`default-${e.value}`}
                                                 />
                                             )
                                         })}
@@ -231,6 +235,7 @@ export default function Page() {
                                                     name="opt5"
                                                     type={'checkbox'}
                                                     value={e.value}
+                                                    id={`default-${e.value}`}
                                                 />
                                             )
                                         })}
@@ -241,7 +246,6 @@ export default function Page() {
                                             placeholder='Other? For example in rotations , side bends , wing stairs , when working with the arm above the head'
                                             name="exp"
                                             rows={3}
-                                        // xs={"auto"}
                                         />
                                     </div>
                                 </Form.Group>
@@ -261,6 +265,7 @@ export default function Page() {
                                                     name="opt6"
                                                     type={'radio'}
                                                     value={e}
+                                                    id={`default-${e}`}
                                                 />
                                             )
                                         })}
@@ -281,7 +286,6 @@ export default function Page() {
                 </Row>
             </Container >
             {form && form.map((ele, ind) => {
-                console.log('ok')
                 if (!ele) return ''
                 else
                     return (
@@ -403,19 +407,20 @@ export default function Page() {
                                                             e.value == x
                                                         )
                                                     })
-                                                    console.log(val, e.value)
                                                     const a = <Form.Check
                                                         key={i}
-                                                        disabled={e.value != val}
+                                                        disabled={val && e.value != val}
                                                         label={e.label}
                                                         type={'checkbox'}
-                                                        checked={val && val.length > 0}
+                                                        name='opt5'
+                                                        defaultChecked={val && val.length > 0 }
                                                         readOnly
                                                     />
                                                     const b = <Form.Check
                                                         key={i}
                                                         disabled={true}
                                                         label={e.label}
+                                                        name='opt5'
                                                         type={'checkbox'}
                                                     />
                                                     return (ele.opt5.length > 0 ? a : b)
@@ -464,7 +469,7 @@ export default function Page() {
                 <Row className='justify-content-center mt-3 mb-5'>
                     <Col xs={"auto"} md={12} style={{ display: "flex", justifyContent: "center" }}>
                         <div>
-                            <Button onClick={next}>next</Button>
+                            <Button onClick={next} style={{ width: '8rem' }}>next</Button>
                         </div>
                     </Col>
                 </Row>
