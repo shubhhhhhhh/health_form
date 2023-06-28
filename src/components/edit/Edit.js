@@ -25,7 +25,12 @@ export default function Edit(props) {
 
     return (
         <>
-            <Modal dialogClassName="modal-90w" show={true} onHide={cancel}>
+            <Modal
+                dialogClassName="modal-90w"
+                show={true}
+                onHide={cancel}
+                size='lg'
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>update form</Modal.Title>
                 </Modal.Header>
@@ -121,7 +126,7 @@ export default function Edit(props) {
                                                             value={e.value}
                                                             checked={props.input.opt3 ? props.input.opt3 == e.value
                                                                 : ""}
-                                                                onChange={props.handlechange}
+                                                            onChange={props.handlechange}
                                                             id={`default-${e.value}-opt3`}
                                                         />
                                                     )

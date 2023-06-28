@@ -300,10 +300,10 @@ export default function Page() {
                     </Col>
                 </Row>
                 <Row className='justify-content-center mt-4'>
-                    <Col md={12} xs={"auto"}>
+                    <Col md={12} xs={12}>
                         <div style={{ width: "47.5%", display: 'inline-block', verticalAlign: 'middle' }}><hr></hr></div>
                         <div style={{ width: "5%", display: 'inline-block', verticalAlign: 'middle' }}>
-                            <Button onClick={submit}>+</Button>
+                            <Button style={{width:"100%"}} onClick={submit}>+</Button>
                         </div>
                         <div style={{ width: "47.5%", display: 'inline-block', verticalAlign: 'middle' }}><hr></hr></div>
                     </Col>
