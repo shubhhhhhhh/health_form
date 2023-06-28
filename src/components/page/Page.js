@@ -57,8 +57,6 @@ export default function Page() {
         setDat(form)
     }, [form])
 
-    //for reset formBox
-    const formRef = useRef(null)
 
     //func for submit button / + button
     function submit() {
@@ -67,7 +65,6 @@ export default function Page() {
             if (!form) setForm([input])
             else setForm([...form, input])
             setInput()
-            formRef.current.reset()
         }
     }
 
@@ -92,7 +89,6 @@ export default function Page() {
     const [showEdit, setShowEdit] = useState(false);
     const viewEdit = showEdit ?
         <Edit
-            formref={formRef}
             setshowedit={setShowEdit}
             form={form}
             setform={setForm}
@@ -128,17 +124,24 @@ export default function Page() {
                 </Row>
                 <Row className='formBox mt-3 justify-content-center'>
                     <Col className='p-1 px-2' xs={"auto"} md={9} >
-                        <Form ref={formRef}>
+                        <Form>
                             <div className='prob_txtarea'>
                                 <Form.Group className="mb-3 ">
                                     <Form.Label>
                                         If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)
                                     </Form.Label>
-                                    <Form.Control as={"textarea"} placeholder='type here' name="prob" onChange={handleChange} rows={3}  />
+                                    <Form.Control
+                                        as={"textarea"}
+                                        placeholder='type here'
+                                        name="prob"
+                                        onChange={handleChange}
+                                        rows={3}
+                                        value={(input&&input.prob)??''}
+                                    />
                                 </Form.Group>
                             </div>
                             <div className='opt1'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <Form.Label style={{ marginRight: "5%" }}>
                                         Have you been diagnosed with this problem?
                                     </Form.Label>
@@ -150,15 +153,17 @@ export default function Page() {
                                                 label={e.label}
                                                 name="opt1"
                                                 type={'radio'}
-                                                id={`default-${e.value}-1`}
+                                                id={`default-${e.value}-opt1`}
                                                 value={e.value}
+                                                checked={(input && input.opt1 == e.value)??false}
+                                                onChange={handleChange}
                                             />
                                         )
                                     })}
                                 </Form.Group>
                             </div>
                             <div className='opt2'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <Form.Label style={{ marginRight: "5%" }}>
                                         Did the problem start after a physical trauma?
                                     </Form.Label>
@@ -171,14 +176,16 @@ export default function Page() {
                                                 name="opt2"
                                                 type={'radio'}
                                                 value={e.value}
-                                                id={`default-${e.value}-2`}
+                                                id={`default-${e.value}-opt2`}
+                                                checked={(input && input.opt2 == e.value)??false}
+                                                onChange={handleChange}
                                             />
                                         )
                                     })}
                                 </Form.Group>
                             </div>
                             <div className='opt3'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <Form.Label style={{ marginRight: "5%" }}>
                                         Did the problem start after a mental trauma?
                                     </Form.Label>
@@ -191,14 +198,16 @@ export default function Page() {
                                                 name="opt3"
                                                 type={'radio'}
                                                 value={e.value}
-                                                id={`default-${e.value}-3`}
+                                                id={`default-${e.value}-opt3`}
+                                                checked={(input && input.opt3 == e.value)??false}
+                                                onChange={handleChange}
                                             />
                                         )
                                     })}
                                 </Form.Group>
                             </div>
                             <div className='opt4'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <Form.Label>
                                         How often do you experience the problem?
                                     </Form.Label>
@@ -212,7 +221,9 @@ export default function Page() {
                                                     name="opt4"
                                                     type={'radio'}
                                                     value={e.value}
-                                                    id={`default-${e.value}`}
+                                                    id={`default-${e.value}-opt4`}
+                                                    checked={(input && input.opt4 == e.value)??false}
+                                                    onChange={handleChange}
                                                 />
                                             )
                                         })}
@@ -220,7 +231,7 @@ export default function Page() {
                                 </Form.Group>
                             </div>
                             <div className='opt5'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <div className='label'>
                                         <Form.Label>
                                             When do you experience the problem?
@@ -228,6 +239,11 @@ export default function Page() {
                                     </div>
                                     <div className='opt mb-3' key={`inline-checkbox`} style={{ verticalAlign: "middle", display: "inline-block", width: "30%" }}>
                                         {opt5.map((e, i) => {
+                                             const val = input && input.opt5.find((x) => {
+                                                return (
+                                                    e.value == x
+                                                )
+                                            })
                                             return (
                                                 <Form.Check
                                                     key={i}
@@ -235,7 +251,11 @@ export default function Page() {
                                                     name="opt5"
                                                     type={'checkbox'}
                                                     value={e.value}
-                                                    id={`default-${e.value}`}
+                                                    id={`default-${e.value}-opt5`}
+                                                    checked={( val && val.length > 0) ?? false}
+                                                    // defaultChecked={props.input.opt5 ? val && val.length > 0
+                                                    //     : ""}
+                                                    onChange={handleChange}
                                                 />
                                             )
                                         })}
@@ -246,12 +266,14 @@ export default function Page() {
                                             placeholder='Other? For example in rotations , side bends , wing stairs , when working with the arm above the head'
                                             name="exp"
                                             rows={3}
+                                            value={(input&&input.exp)??''}
+                                            onChange={handleChange}
                                         />
                                     </div>
                                 </Form.Group>
                             </div>
                             <div className='opt6'>
-                                <Form.Group className="mb-3" onChange={handleChange}>
+                                <Form.Group className="mb-3">
                                     <Form.Label>
                                         How intense is the experience of the problem on average on a 0-10 scale?
                                     </Form.Label>
@@ -265,7 +287,9 @@ export default function Page() {
                                                     name="opt6"
                                                     type={'radio'}
                                                     value={e}
-                                                    id={`default-${e}`}
+                                                    id={`default-${e}-opt6`}
+                                                    checked={(input && input.opt6 == e)??false}
+                                                    onChange={handleChange}
                                                 />
                                             )
                                         })}
@@ -413,7 +437,7 @@ export default function Page() {
                                                         label={e.label}
                                                         type={'checkbox'}
                                                         name='opt5'
-                                                        defaultChecked={val && val.length > 0 }
+                                                        defaultChecked={val && val.length > 0}
                                                         readOnly
                                                     />
                                                     const b = <Form.Check

@@ -3,10 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function Edit(props) {
-
-    //for reset formBox
-    const formRef = useRef(null)
-
     //func for submit button / done button
     function submit() {
         if (!props.input || props.input && !props.input.prob) alert("type your problem")
@@ -17,16 +13,12 @@ export default function Edit(props) {
                 return [...prev]
             })
             props.setinput()
-            // props.formref.current.reset()
-            formRef.current.reset()
             props.setshowedit(false)
 
         }
     }
     function cancel() {
         props.setinput()
-        // props.formref.current.reset()
-        formRef.current.reset()
         props.setshowedit(false)
     }
 
@@ -53,15 +45,21 @@ export default function Edit(props) {
                         </Row>
                         <Row className='formBox mt-3 justify-content-center'>
                             <Col className='p-1' md={9} xs={"auto"}>
-                                <Form ref={formRef}>
+                                <Form >
                                     <div className='prob_txtarea'>
                                         <Form.Group className="mb-3">
                                             <Form.Label>If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)</Form.Label>
-                                            <Form.Control as={"textarea"} placeholder='type here' name="prob" onChange={props.handlechange} defaultValue={props.input.prob ? props.input.prob : ''} rows={3} />
+                                            <Form.Control
+                                                as={"textarea"}
+                                                placeholder='type here'
+                                                name="prob"
+                                                onChange={props.handlechange}
+                                                value={props.input.prob ? props.input.prob : ''}
+                                                rows={3} />
                                         </Form.Group>
                                     </div>
                                     <div className='opt1'>
-                                        <Form.Group className="mb-3" onChange={props.handlechange}>
+                                        <Form.Group className="mb-3" >
                                             <Form.Label style={{ marginRight: "5%" }}>
                                                 Have you been diagnosed with this problem?
                                             </Form.Label>
@@ -74,7 +72,7 @@ export default function Edit(props) {
                                                         name="opt1"
                                                         type={'radio'}
                                                         value={e.value}
-                                                        defaultChecked={props.input.opt1 ? props.input.opt1 == e.value
+                                                        checked={props.input.opt1 ? props.input.opt1 == e.value
                                                             : ""}
                                                         id={`default-${e.value}-opt1`}
                                                         onChange={props.handlechange}
@@ -84,7 +82,7 @@ export default function Edit(props) {
                                         </Form.Group>
                                     </div>
                                     <div className='opt2'>
-                                        <Form.Group className="mb-3" onChange={props.handlechange}>
+                                        <Form.Group className="mb-3" >
                                             <Form.Label style={{ marginRight: "5%" }}>
                                                 Did the problem start after a physical trauma?
                                             </Form.Label>
@@ -97,36 +95,37 @@ export default function Edit(props) {
                                                         name="opt2"
                                                         type={'radio'}
                                                         value={e.value}
-                                                        defaultChecked={props.input.opt2 ? props.input.opt2 == e.value
+                                                        checked={props.input.opt2 ? props.input.opt2 == e.value
                                                             : ""}
-                                                        id={`default-${e.value}-opt2`}
                                                         onChange={props.handlechange}
+                                                        id={`default-${e.value}-opt2`}
                                                     />
                                                 )
                                             })}
                                         </Form.Group>
                                     </div>
                                     <div className='opt3'>
-                                        <Form.Group className="mb-3" onChange={props.handlechange}>
+                                        <Form.Group className="mb-3" >
                                             <Form.Label style={{ marginRight: "5%" }}>
                                                 Did the problem start after a mental trauma?
                                             </Form.Label>
                                             <div key={`inline-radio`} className="mb-3">
-                                            {props.comopt.map((e, i) => {
-                                                return (
-                                                    <Form.Check
-                                                        key={i}
-                                                        inline
-                                                        label={e.label}
-                                                        name="opt3"
-                                                        type={'radio'}
-                                                        value={e.value}
-                                                        defaultChecked={props.input.opt3 ? props.input.opt3 == e.value
-                                                            : ""}
-                                                        id={`default-${e.value}-opt3`}
-                                                    />
-                                                )
-                                            })}
+                                                {props.comopt.map((e, i) => {
+                                                    return (
+                                                        <Form.Check
+                                                            key={i}
+                                                            inline
+                                                            label={e.label}
+                                                            name="opt3"
+                                                            type={'radio'}
+                                                            value={e.value}
+                                                            checked={props.input.opt3 ? props.input.opt3 == e.value
+                                                                : ""}
+                                                                onChange={props.handlechange}
+                                                            id={`default-${e.value}-opt3`}
+                                                        />
+                                                    )
+                                                })}
                                             </div>
                                         </Form.Group>
                                     </div>
