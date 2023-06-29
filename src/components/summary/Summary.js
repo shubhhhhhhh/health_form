@@ -48,7 +48,7 @@ export default function Summary() {
                                         <tbody >
                                             <tr className="d-flex">
                                                 <th className="col-9" >
-                                                    If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)
+                                                    If you have problem/aches, stiffness, weakness/functional problems, describe this/these below(list the symptoms with the descending order with the most troublesome first.)
                                                 </th>
                                                 <td className="col-3">
                                                     {ele.prob}
