@@ -95,7 +95,7 @@ export default function Page() {
         <>
             <Container className='my-4 px-5'>
                 <Row className='heading px-2 mt-3 justify-content-center'>
-                    <Col className='p-1' md={5} xs={"auto"}>
+                    <Col className='p-1' md={5} xs={"8"}>
                         <div style={{ margin: "auto", textAlign: "center" }}>
                             <h2 style={{ color: 'dodgerblue', marginBottom: "-0.5%" }}>
                                 Pain & Functional Description
@@ -303,8 +303,8 @@ export default function Page() {
                                     </Button>
                                 </Col>
                             </Row>
-                            <Row className='heading mt-3 justify-content-center'>
-                                <Col className='p-1' xs={"auto"} md={5}>
+                            <Row className='heading px-2 mt-3 justify-content-center'>
+                                <Col className='p-1' xs={"8"} md={5}>
                                     <div style={{ margin: "auto", textAlign: "center" }}>
                                         <h2 style={{ color: 'dodgerblue', marginBottom: "-0.5%" }}>
                                             Pain & Functional Description

@@ -35,9 +35,9 @@ export default function Edit(props) {
                     <Modal.Title>update form</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Container className='my-5'>
-                        <Row className='heading mt-3 justify-content-center'>
-                            <Col className='p-1' md={5} xs={"auto"}>
+                    <Container className='px-5'>
+                        <Row className='heading px-2 justify-content-center'>
+                            <Col className='p-1' md={5} xs={9}>
                                 <div style={{ margin: "auto", textAlign: "center" }}>
                                     <h2 style={{ color: 'dodgerblue', marginBottom: "-0.5%" }}>
                                         Pain & Functional Description
@@ -53,7 +53,11 @@ export default function Edit(props) {
                                 <Form >
                                     <div className='prob_txtarea'>
                                         <Form.Group className="mb-3">
-                                            <Form.Label>If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)</Form.Label>
+                                            <Form.Label>
+                                                If you have problem/aches, stiffness,
+                                                weakness/functional problems, describe this/these
+                                                below(list the symptoms with the descending order with the
+                                                most troublesome first.)</Form.Label>
                                             <Form.Control
                                                 as={"textarea"}
                                                 placeholder='type here'
@@ -226,10 +230,16 @@ export default function Edit(props) {
                         </Row>
                         <Row className='justify-content-center mt-4'>
                             <hr></hr>
-                            <Col md={2} xs={"auto"} style={{ position: "relative", marginTop: "-4%" }}>
+                            <Col
+                                md={2}
+                                xs={"auto"}
+                            >
                                 <Button onClick={cancel}>cancel</Button>
                             </Col>
-                            <Col md={2} xs={"auto"} style={{ position: "relative", marginTop: "-4%" }}>
+
+                            <Col
+                                md={2}
+                                xs={"auto"} >
                                 <Button onClick={submit}>done</Button>
                             </Col>
                         </Row>
