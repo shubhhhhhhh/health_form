@@ -1,0 +1,9 @@
+.addbtn{
+    width: 100%;
+}
+
+@media screen and (max-width:450px) {
+    .addbtn{
+        width: 100%;
+    }
+}

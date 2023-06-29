@@ -2,6 +2,7 @@ import { MainContext } from "../../context/Context";
 import { useContext } from "react"
 import { Col, Container, Navbar, Table, Row, Button, } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import './summary.css'
 
 export default function Summary() {
     const { datas } = useContext(MainContext)
@@ -16,8 +17,8 @@ export default function Summary() {
     return (
         <>
             <Container className="my-3">
-                <Row className="justify-content-center my-2">
-                    <Col md={4}>
+                <Row className="justify-content-center my-2 headng">
+                    <Col xs={"auto"} md={4} style={{ display: "flex", justifyContent: "center" }}>
                         <div>
                             <h1>
                                 Summary
@@ -26,7 +27,7 @@ export default function Summary() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="Table" style={{ width: "100%", marginBottom: "0.5rem", overflowY: "scroll", overflowX: "scroll", }}>
+                    <Col className="Table" style={{ width: "100%", marginBottom: "0.5rem"}}>
                         {datas && datas.map((ele, ind) => {
                             let exp
                             if(ele.exp && ele.opt5.length>0){
@@ -34,61 +35,61 @@ export default function Summary() {
                             }
                             else exp = ele.exp
                             return (
+                                <>
                                 <Table
                                     key={ind}
                                     striped
                                     bordered
                                     variant="light"
                                     hover
-                                    responsive="sm"
-                                    style={{marginBottom:"5%"}}
+                                    style={{margin:"5% 0"}}
                                 >
                                     <tbody>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9">
                                                 If you have problem/aches,stiffness,weakness/functional problems,describe this/these below(list the symptoms with the descending order with the most troublesome first.)
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.prob}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9"> 
                                                 Have you been diagnosed with this problem?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt1}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9">
                                                 Did the problem start after a physical trauma?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt2}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9"> 
                                                 Did the problem start after a mental trauma?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt3}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9">
                                                 How often do you experience the problem?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt4}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9">
                                                 When do you experience the problem?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt5.map(e=>{
                                                     if(e == "nr")return " Not relevant "
                                                     else if(e == "wld")return " When lying down "
@@ -96,26 +97,28 @@ export default function Summary() {
                                                     else if(e == "us")return " Under standing "
                                                     else if(e == "in")return " In Walking "
                                                 }).join(",") }{exp}
-                                            </th>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th>
+                                        <tr className="d-flex">
+                                            <th className="col-9">
                                                 How intense is the experience of the problem on average on a 0-10 scale?
                                             </th>
-                                            <th>
+                                            <td className="col-3">
                                                 {ele.opt6}
-                                            </th>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </Table>
+                                <hr></hr>
+                                </>
                             )
                         })
                         }
                     </Col>
                 </Row>
-                <Row className="justify-content-center mb-5">
-                    <Col md={2}>
-                        <Button onClick={back}>back</Button>
+                <Row className="justify-content-center mb-5 bbtn">
+                    <Col xs={12} style={{ display: "flex", justifyContent: "center" }} md={12}>
+                        <Button className="backButton" onClick={back}>back</Button>
                     </Col>
                 </Row>
             </Container>
