@@ -1,9 +1,8 @@
 import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router';
 
-export default function Edit(props) {
-    //func for submit button / done button
+export default function EditBox(props) {
+
+    //function for submit button / done button
     function submit() {
         if (!props.input || props.input && !props.input.prob) alert("type your problem")
         else {
@@ -17,6 +16,8 @@ export default function Edit(props) {
 
         }
     }
+
+    //function for cancel button
     function cancel() {
         props.setinput()
         props.setshowedit(false)

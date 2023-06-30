@@ -1,13 +1,12 @@
 import React from "react";
 import { MainContext } from "../../context/Context";
 import { useContext } from "react"
-import { Col, Container, Navbar, Table, Row, Button, } from "react-bootstrap";
+import { Col, Container, Table, Row, Button, } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import './summary.css'
 
 export default function Summary() {
     const { datas } = useContext(MainContext)
-    // console.log(datas)
 
     const navigate = useNavigate()
 
@@ -17,7 +16,7 @@ export default function Summary() {
 
     return (
         <>
-            <Container className="my-3">
+            <Container className="my-3 px-5">
                 <Row className="justify-content-center my-2 headng">
                     <Col xs={"auto"} md={4} style={{ display: "flex", justifyContent: "center" }}>
                         <div>

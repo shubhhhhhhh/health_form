@@ -1,8 +1,6 @@
-import { useState } from "react"
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 export default function Forms({ form, comOpt, opt4, opt5, arr, edi }) {
-    // console.log(props)
 
     return (
         <>

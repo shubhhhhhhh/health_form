@@ -2,6 +2,11 @@
     background-color: yellow;
 }
 
+.headng{
+    margin: 50% 0 0 0!important;
+}
+
+
 
 @media screen and (max-width:450px) {
     .col-10 {
@@ -22,5 +27,9 @@
 
    Table th{
     word-wrap: break-word;
+   }
+
+   .headng{
+    margin:10% 0 0 0; 
    }
 }
